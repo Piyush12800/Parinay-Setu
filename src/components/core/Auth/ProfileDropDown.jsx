@@ -47,12 +47,21 @@ export default function ProfileDropdown() {
             <VscSignOut className="text-lg" />
             Logout
           </div>
-          <Link to="/dashboard" style={{ color: 'inherit', textDecoration: 'none' }} onClick={() => setOpen(false)}>
-            <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-cornsilk">
-              <VscDashboard className="text-lg" />
-              Dashboard
-            </div>
-          </Link>
+          {user.userType === "admin" ? (
+            <Link to="/dashboard" style={{ color: 'inherit', textDecoration: 'none' }} onClick={() => setOpen(false)}>
+              <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-cornsilk">
+                <VscDashboard className="text-lg" />
+                Dashboard
+              </div>
+            </Link>
+          ) : (
+            <Link to="/my-dashboard" style={{ color: 'inherit', textDecoration: 'none' }} onClick={() => setOpen(false)}>
+              <div className="flex w-full items-center gap-x-1 py-[10px] px-[12px] text-sm text-richblack-100 hover:bg-cornsilk">
+                <VscDashboard className="text-lg" />
+                Dashboard
+              </div>
+            </Link>
+          )}
         </div>
       )}
     </div>

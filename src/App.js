@@ -103,7 +103,7 @@ function App() {
         />
         {/* User profile page */}
         <Route
-          path="/user"
+          path="/my-dashboard"
           element={
 
             <PrivateRoute>
