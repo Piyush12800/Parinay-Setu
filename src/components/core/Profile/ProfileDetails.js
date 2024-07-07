@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getUserDetails } from '../../../services/operations/profile'; // Adjust the import path as necessary
@@ -11,7 +11,7 @@ const ProfileDetails = () => {
     const token = useSelector((state) => state.auth.token);
     const user = useSelector((state) => state.profile.user);
     const loading = useSelector((state) => state.profile.loading);
-  
+    const [visibleSections, setVisibleSections] = useState({});
     useEffect(() => {
       if (token) {
         dispatch(getUserDetails(token));
@@ -27,7 +27,12 @@ const ProfileDetails = () => {
     if (!user) {
       return <div>No user data available.</div>;
     }
-  
+    const toggleSection = (title) => {
+      setVisibleSections(prev => ({
+        ...prev,
+        [title]: !prev[title]
+      }));
+    };
     const renderField = (label, value) => {
       if (value) {
         return (
@@ -54,8 +59,13 @@ const ProfileDetails = () => {
       if (renderedFields.length > 0) {
         return (
           <div key={title}>
-            <h2>{title}</h2>
-            {renderedFields}
+            <h2 
+              onClick={() => toggleSection(title)}
+              style={{ cursor: 'pointer', userSelect: 'none' }}
+            >
+              {visibleSections[title] ? '▼' : '▶'} {title}
+            </h2>
+            {visibleSections[title] && renderedFields}
           </div>
         );
       }
@@ -271,7 +281,14 @@ const ProfileDetails = () => {
           <br />
           <strong>Email:</strong> {user.email}
         </p> 
+        <div className=''>
+
         {sections.map(section => renderSection(section.title, section.fields))}
+        </div>
+
+        <div>
+          <button className='text-white bg-slate-900 w-[35%] h-[4vh] rounded-xl' onClick={() => navigate('/rec')}>Show all recommended Profiles</button>
+        </div>
       </div>
     );
   };
