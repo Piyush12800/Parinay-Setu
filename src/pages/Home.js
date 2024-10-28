@@ -51,7 +51,7 @@ const Home = () => {
           <span className="text-red">{`Support `}</span>
           <span>and</span>
           <span className="text-red"> Assistance</span>
-          <span> on your finger tips</span>
+          <span> on your tips</span>
         </div>
       </div>
       <div className="grid grid-cols-1 min-[769px]:grid-cols-2 gap-[16px] lg:gap-[32px] mt-[60px] sm:mt-[80px] md:mt-[100px] lg:mt-[120px] justify-items-center">
@@ -113,7 +113,7 @@ const Home = () => {
             <p className="m-0">Marriage is a very important ritual in every caste and religion in human society, which is not only social but also a very important religious ritual. Nowadays the desire to be and look modern has made marriage a business, the truth is hidden by resorting to lies and deceit. Therefore, as soon as the child becomes marriageable, the search for a suitable bride and groom and family becomes the biggest concern for the parents. Keeping all these in mind, we have formed "Parinay Setu Marriage Bureau",
             </p>
             <p className="m-0">&nbsp;</p>
-            <p className="m-0">In which members are registered by charging a fixed fee and authentic information of each registered member is made available on the "Parinay Setu". Our newly formed organization has some such main features, which give it a unique identity in terms of credibility from other matrimonial organizations running in the country.</p>
+            <p className="m-0">In which members are registered by charging a fixed fee and authentic information of each registered member is made available on the "Patna". Our newly formed organization has some such main features, which give it a unique identity in terms of credibility from other matrimonial organizations running in the country.</p>
             <p className="m-0">&nbsp;</p>
             <p className="m-0"> Please refer to the following download links to Get more details</p>
           </div>

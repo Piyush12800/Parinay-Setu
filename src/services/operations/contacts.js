@@ -6,7 +6,7 @@ import { logout } from "./authAPi"
 const { CREATE_CONTACT_API, UPDATE_CONTACT_API, GET_USER_CONTACTS_API } = contactEndpoints;
 
 export const createContact = async (data, token) => {
-    const toastId = toast.loading("Creating contact...");
+    // const toastId = toast.loading("Creating contact...");
     let result = null;
     try {
         const response = await apiConnector("POST", CREATE_CONTACT_API, data, {
@@ -15,17 +15,17 @@ export const createContact = async (data, token) => {
         if (!response.data.success) {
             throw new Error(response.data.message);
         }
-        toast.success("Contact created successfully");
+        // toast.success("Contact created successfully");
         result = response.data;
     } catch (error) {
-        toast.error(error.message);
+        // toast.error(error.message);
     }
-    toast.dismiss(toastId);
+    // toast.dismiss(toastId);
     return result;
 };
 
 export const updateContact = async (data, token) => {
-    const toastId = toast.loading("Updating contact...");
+    // const toastId = toast.loading("Updating contact...");
     let result = null;
     try {
         const response = await apiConnector("PUT", UPDATE_CONTACT_API, data, {
@@ -34,18 +34,18 @@ export const updateContact = async (data, token) => {
         if (!response.data.success) {
             throw new Error(response.data.message);
         }
-        toast.success("Contact updated successfully");
+        // toast.success("Contact updated successfully");
         result = response.data;
     } catch (error) {
-        toast.error(error.message);
+        // toast.error(error.message);
     }
-    toast.dismiss(toastId);
+    // toast.dismiss(toastId);
     return result;
 };
 
 export const getUserContacts = (token) => {
     return async (dispatch) => {
-        const toastId = toast.loading("Retrieving contacts...");
+        // const toastId = toast.loading("Retrieving contacts...");
         dispatch(setLoading(true));
         try {
             const response = await apiConnector("GET", GET_USER_CONTACTS_API, null, {
@@ -61,14 +61,14 @@ export const getUserContacts = (token) => {
 
             if (contactsData && Object.keys(contactsData).length > 0) {
                 dispatch(setUserContacts(contactsData));
-                toast.success("Contacts retrieved successfully");
+                // toast.success("Contacts retrieved successfully");
             } else {
                 console.log("No contacts data found");
-                toast.info("No contacts data available");
+                // toast.info("No contacts data available");
             }
 
             dispatch(setLoading(false));
-            toast.dismiss(toastId);
+            // toast.dismiss(toastId);
             return contactsData; // Return the contacts data (or empty object) for further use
 
         } catch (error) {
